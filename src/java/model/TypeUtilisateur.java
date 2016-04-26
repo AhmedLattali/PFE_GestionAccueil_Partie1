@@ -91,5 +91,5 @@ public class TypeUtilisateur implements Serializable {
     public String toString() {
         return "model.TypeUtilisateur[ libeleTypeUtilisateur=" + libeleTypeUtilisateur + " ]";
     }
-    
+
 }

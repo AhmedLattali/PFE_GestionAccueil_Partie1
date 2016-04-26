@@ -28,5 +28,5 @@ public class FonctionFacade extends AbstractFacade<Fonction> {
     public FonctionFacade() {
         super(Fonction.class);
     }
-    
+
 }

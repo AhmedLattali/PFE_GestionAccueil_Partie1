@@ -12,7 +12,7 @@
         <h:form>
             <p:dialog header="Authentification"  resizable="false" visible="true" closable="false" draggable="false">
                 <h:panelGrid columns="2" cellpadding="5">
-                
+
                     <h:outputText value="Pseudo : "/>
                     <p:inputText id="pseudo" value = "#{utilisateurController.user.pseudo}" required="true" requiredMessage="#{bundle.LoginRequiredPseudo}"/>
                     <h:outputText value="Mot de passe : "/>
@@ -20,9 +20,9 @@
                     <f:facet name="footer">
                         <p:commandButton value="connecter" action="#{utilisateurController.loginControl()}" update=":growl"/>
                     </f:facet>
-                      </h:panelGrid>
+                </h:panelGrid>
             </p:dialog>
-         
+
         </h:form>    
     </h:body>
 </html>

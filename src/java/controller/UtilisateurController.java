@@ -31,11 +31,11 @@ public class UtilisateurController implements Serializable {
     private facade.UtilisateurFacade ejbFacade;
     private List<Utilisateur> items = null;
     private Utilisateur selected;
-    private Utilisateur user =new Utilisateur();
+    private Utilisateur user = new Utilisateur();
 
     public UtilisateurController() {
     }
-    
+
     public String loginControl() {
         String s = "a";
         System.out.println("a");
@@ -44,30 +44,31 @@ public class UtilisateurController implements Serializable {
             RequestContext.getCurrentInstance().update("growl");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erreur", "Nom d'utilisateur ou mot de passe incorrecte"));
-           // A supprimer aprés
+            // A supprimer aprés
             // return "/accueil_agent.xhtml";
             // A supprimer aprés
 
-        } else {
-            // get Http Session and store username
-            //HttpSession session = Util.getSession();
-            //session.setAttribute("usersession", user);
+        } else // get Http Session and store username
+        //HttpSession session = Util.getSession();
+        //session.setAttribute("usersession", user);
+        {
             if (s.equals("Administrateur")) {
 
                 return "accueil_admin.xhtml?faces-redirect=true";
             } else {
                 return "accueil_agent.xhtml?faces-redirect=true";
             }
-
         }
         return "";
 
     }
-    public String logout(){
-      HttpSession session = Util.getSession();
-      session.invalidate();
-      return "login.xhtml?faces-redirect=true";
+
+    public String logout() {
+        HttpSession session = Util.getSession();
+        session.invalidate();
+        return "login.xhtml?faces-redirect=true";
     }
+
     public Utilisateur getSelected() {
         return selected;
     }
@@ -121,21 +122,21 @@ public class UtilisateurController implements Serializable {
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {
             setEmbeddableKeys();
-                        try {
-                            switch(persistAction) {
-                case CREATE :
-                         getFacade().create(selected);
-                break ;
-                                case UPDATE :
-                         getFacade().edit(selected);
-                break ;
-                                case DELETE :
-                         getFacade().remove(selected);
-                break ;
-               
-            }
-                   JsfUtil.addSuccessMessage(successMessage);  
-            }catch (EJBException ex) {
+            try {
+                switch (persistAction) {
+                    case CREATE:
+                        getFacade().create(selected);
+                        break;
+                    case UPDATE:
+                        getFacade().edit(selected);
+                        break;
+                    case DELETE:
+                        getFacade().remove(selected);
+                        break;
+
+                }
+                JsfUtil.addSuccessMessage(successMessage);
+            } catch (EJBException ex) {
                 String msg = "";
                 Throwable cause = ex.getCause();
                 if (cause != null) {
@@ -150,7 +151,7 @@ public class UtilisateurController implements Serializable {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
                 JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             }
-          /*  try {
+            /*  try {
                 if (persistAction != PersistAction.DELETE) {
                     getFacade().edit(selected);
                 } else {

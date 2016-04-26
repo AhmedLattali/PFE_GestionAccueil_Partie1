@@ -182,5 +182,5 @@ public class Utilisateur implements Serializable {
     public String toString() {
         return "model.Utilisateur[ id=" + id + " ]";
     }
-    
+
 }

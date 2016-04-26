@@ -116,7 +116,7 @@ public class TypeUtilisateurController implements Serializable {
     public List<TypeUtilisateur> getItemsAvailableSelectMany() {
         List<TypeUtilisateur> a = getFacade().findAll();
         System.out.println("a");
-        return a ;
+        return a;
     }
 
     public List<TypeUtilisateur> getItemsAvailableSelectOne() {

@@ -90,5 +90,5 @@ public class Fonction implements Serializable {
     public String toString() {
         return "model.Fonction[ libeleFonction=" + libeleFonction + " ]";
     }
-    
+
 }
