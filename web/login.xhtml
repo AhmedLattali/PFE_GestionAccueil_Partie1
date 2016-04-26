@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Authentification</title>
+    </h:head>
+    <h:body>
+        <p:growl id="growl"  showDetail="true" showSummary="false" life="400"/> 
+        <h:form>
+            <p:dialog header="Authentification"  resizable="false" visible="true" closable="false" draggable="false">
+                <h:panelGrid columns="2" cellpadding="5">
+                
+                    <h:outputText value="Pseudo : "/>
+                    <p:inputText id="pseudo" value = "#{utilisateurController.user.pseudo}" required="true" requiredMessage="#{bundle.LoginRequiredPseudo}"/>
+                    <h:outputText value="Mot de passe : "/>
+                    <p:password value="#{utilisateurController.user.motdepasse}" required="true" requiredMessage="#{bundle.LoginRequiredMotDePasse}"/>
+                    <f:facet name="footer">
+                        <p:commandButton value="connecter" action="#{utilisateurController.loginControl()}" update=":growl"/>
+                    </f:facet>
+                      </h:panelGrid>
+            </p:dialog>
+         
+        </h:form>    
+    </h:body>
+</html>
+

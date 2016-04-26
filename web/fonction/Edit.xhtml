@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FonctionEditDlg" widgetVar="FonctionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFonctionTitle}">
+            <h:form id="FonctionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fonctionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFonctionLabel_libeleFonction}" for="libeleFonction" />
+                        <p:inputText id="libeleFonction" value="#{fonctionController.selected.libeleFonction}" title="#{bundle.EditFonctionTitle_libeleFonction}" required="true" requiredMessage="#{bundle.EditFonctionRequiredMessage_libeleFonction}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fonctionController.update}" value="#{bundle.Save}" update="display,:FonctionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FonctionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FonctionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
