@@ -2,27 +2,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Espace Admin
-        <br />
-        <p>Welcome #{usersession.pseudo} #{usersession.nom}you have been logged in!</p>    
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-        <h:form>      
-            <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-            <br />
-            <h:link outcome="/fonction/List" value="Show All Fonction Items"/>
-            <br />
-            <h:link outcome="/typeUtilisateur/List" value="Show All TypeUtilisateur Items"/>
-            <br />
-            <h:link outcome="/utilisateur/List" value="Show All Utilisateur Items"/>
-            <p:commandButton action="#{utilisateurController.logout}" value="Logout"  ajax="false"></p:commandButton>
-            
-        </h:form>
 
-    </h:body>
+    <ui:composition template="/templates/default/main.xhtml">
+        <h:head>
+            <title>Facelet Title</title>
+        </h:head>
+        <ui:define name="content">    
+            <br />
+           <p> Espace Administrateur </p>
+            <br />
+            <p>Bienvenue   #{usersession.nom} #{usersession.prenom}</p>   
+            <h:form>       
+                <br /><br />
+                <p:commandButton action="#{utilisateurController.logout}" value="Logout"  ajax="false"></p:commandButton>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>      
 </html>
-
