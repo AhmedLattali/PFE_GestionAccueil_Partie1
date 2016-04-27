@@ -240,6 +240,9 @@ public class UtilisateurController implements Serializable {
                 return null;
             }
         }
+        public void closeDialog(){
+            RequestContext.getCurrentInstance().closeDialog(this);
+        }
 
     }
 
