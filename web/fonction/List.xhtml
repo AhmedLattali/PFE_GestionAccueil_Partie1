@@ -6,16 +6,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="/templates/default/main.xhtml">
 
 
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListFonctionTitle}"></h:outputText>
-        </ui:define>
-
-        <ui:define name="body">
+        <ui:define name="content">
             <h:form id="FonctionListForm">
-                <p:panel header="#{bundle.ListFonctionTitle}">
+                <br/>
+                <br/>
+                <p:panel styleClass="panel" header="#{bundle.ListFonctionTitle}">
+                    <br/>
+                <br/>
                     <p:dataTable id="datalist" value="#{fonctionController.items}" var="item"
                                  selectionMode="single" selection="#{fonctionController.selected}"
                                  paginator="true"

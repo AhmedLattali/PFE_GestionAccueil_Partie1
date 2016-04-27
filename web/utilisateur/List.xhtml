@@ -7,15 +7,13 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/templates/default/main.xhtml">
-
-
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListUtilisateurTitle}"></h:outputText>
-        </ui:define>
-
         <ui:define name="content">
-            <h:form id="UtilisateurListForm">
-                <p:panel header="#{bundle.ListUtilisateurTitle}">
+            <h:form id="UtilisateurListForm" >
+                <br/>
+                <br/>
+                <p:panel styleClass="panel" header="#{bundle.ListUtilisateurTitle}">
+                    <br/>
+                    <br/>
                     <p:dataTable id="datalist" value="#{utilisateurController.items}" var="item"
                                  selectionMode="single" selection="#{utilisateurController.selected}"
                                  paginator="true"

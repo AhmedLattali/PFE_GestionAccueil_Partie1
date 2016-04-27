@@ -1,5 +1,5 @@
 .ui-widget {
-    font-size: 12px !important;
+    font-size: 14px !important;
 }
 .ui-layout-north {
     z-index: 20 !important;
@@ -9,9 +9,19 @@
     overflow: visible !important;
 }
 .ui-widget-header {
-    text-align: center;
-    text-transform: uppercase;
+
 }
 .ui-button {
-    margin-top: 10px !important;
+    margin-top: 40px !important;
+}
+panel{
+    border-color:#ffffff ;
+    margin-top: 50% ;
+    margin-bottom: 10% ;
+}
+.ui-growl {
+    position:absolute;
+    top:50%;
+    left:20%;
+  z-index:9999;
 }
