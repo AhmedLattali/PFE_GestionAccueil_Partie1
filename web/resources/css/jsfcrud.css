@@ -12,16 +12,14 @@
 
 }
 .ui-button {
-    margin-top: 40px !important;
+    margin-top: 30px !important;
 }
 panel{
     border-color:#ffffff ;
-    margin-top: 50% ;
-    margin-bottom: 10% ;
 }
 .ui-growl {
-    position:absolute;
-    top:50%;
-    left:20%;
-  z-index:9999;
+    position:absolute !important;
+    top:50%!important;
+    left:20%!important;
+  z-index:9999!important;
 }
