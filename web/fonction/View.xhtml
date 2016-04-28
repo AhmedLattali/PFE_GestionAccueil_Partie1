@@ -15,7 +15,7 @@
                         <h:outputText value="#{bundle.ViewFonctionLabel_libeleFonction}"/>
                         <h:outputText value="#{fonctionController.selected.libeleFonction}" title="#{bundle.ViewFonctionTitle_libeleFonction}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="FonctionViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Close}" oncomplete="handleSubmit(args,'FonctionViewDialog');"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

@@ -16,7 +16,7 @@
                         <p:inputText id="libeleTypeUtilisateur" value="#{typeUtilisateurController.selected.libeleTypeUtilisateur}" title="#{bundle.EditTypeUtilisateurTitle_libeleTypeUtilisateur}" required="true" requiredMessage="#{bundle.EditTypeUtilisateurRequiredMessage_libeleTypeUtilisateur}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{typeUtilisateurController.update}" value="#{bundle.Save}" update="display,:TypeUtilisateurListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TypeUtilisateurEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="TypeUtilisateurEditDialog.hide()"/>
+                    <p:commandButton immediate="true" value="#{bundle.Cancel}" oncomplete="handleSubmit(args,'TypeUtilisateurEditDialog');"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

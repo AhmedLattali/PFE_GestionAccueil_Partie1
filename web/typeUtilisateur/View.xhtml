@@ -15,7 +15,7 @@
                         <h:outputText value="#{bundle.ViewTypeUtilisateurLabel_libeleTypeUtilisateur}"/>
                         <h:outputText value="#{typeUtilisateurController.selected.libeleTypeUtilisateur}" title="#{bundle.ViewTypeUtilisateurTitle_libeleTypeUtilisateur}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="TypeUtilisateurViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Close}" oncomplete="handleSubmit(args,'TypeUtilisateurViewDialog');"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

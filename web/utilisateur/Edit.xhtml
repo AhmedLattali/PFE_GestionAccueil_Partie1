@@ -42,7 +42,7 @@
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{utilisateurController.update}" value="#{bundle.Save}" update="display,:UtilisateurListForm:datalist,:growl" oncomplete="handleSubmit(args, 'UtilisateurEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="UtilisateurEditDialog.hide()"/>
+                    <p:commandButton immediate="true" value="#{bundle.Cancel}" oncomplete="handleSubmit(args,'UtilisateurEditDialog');"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

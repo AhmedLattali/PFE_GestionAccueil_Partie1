@@ -16,7 +16,7 @@
                         <p:inputText id="libeleFonction" value="#{fonctionController.selected.libeleFonction}" title="#{bundle.EditFonctionTitle_libeleFonction}" required="true" requiredMessage="#{bundle.EditFonctionRequiredMessage_libeleFonction}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{fonctionController.update}" value="#{bundle.Save}" update="display,:FonctionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FonctionEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="FonctionEditDialog.hide()"/>
+                    <p:commandButton immediate="true" value="#{bundle.Cancel}" oncomplete="handleSubmit(args,'FonctionEditDialog');"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
