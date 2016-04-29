@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Fonction.findAll", query = "SELECT f FROM Fonction f"),
     @NamedQuery(name = "Fonction.findByLibeleFonction", query = "SELECT f FROM Fonction f WHERE f.libeleFonction = :libeleFonction")})
+
 public class Fonction implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -88,7 +89,7 @@ public class Fonction implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Fonction[ libeleFonction=" + libeleFonction + " ]";
+        return libeleFonction ;
     }
 
 }

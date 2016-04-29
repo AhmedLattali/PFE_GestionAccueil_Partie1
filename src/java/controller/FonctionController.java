@@ -6,6 +6,7 @@ import controller.util.JsfUtil.PersistAction;
 import facade.FonctionFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -87,19 +88,22 @@ public class FonctionController implements Serializable {
             try {
                 if (persistAction != PersistAction.DELETE) {
                     getFacade().edit(selected);
+                    JsfUtil.addSuccessMessage(successMessage);
                 } else {
-                    getFacade().remove(selected);
+
+                    if(getFacade().remove2(selected)==true){
+                        JsfUtil.addSuccessMessage(successMessage);
+                        
+                    }
                 }
-                JsfUtil.addSuccessMessage(successMessage);
+                
             } catch (EJBException ex) {
                 String msg = "";
                 Throwable cause = ex.getCause();
                 if (cause != null) {
                     msg = cause.getLocalizedMessage();
                 }
-                if (msg.length() > 0) {
-                    JsfUtil.addErrorMessage(msg);
-                } else {
+                if (!(msg.length() > 0)) {
                     JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
                 }
             } catch (Exception ex) {
@@ -114,7 +118,9 @@ public class FonctionController implements Serializable {
     }
 
     public List<Fonction> getItemsAvailableSelectMany() {
+
         return getFacade().findAll();
+
     }
 
     public List<Fonction> getItemsAvailableSelectOne() {

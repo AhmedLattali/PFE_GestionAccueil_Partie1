@@ -32,10 +32,20 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> {
     }
 
     @Override
-    public void create(Utilisateur u) {
-        System.out.println("aaaa");
-        u.setId(count() + 1);
-        getEntityManager().persist(u);
+    public void create(Utilisateur utilisateur) {
+        int id = 1;
+        try {
+            Utilisateur u = getEntityManager().createNamedQuery("Utilisateur.findMaxId", Utilisateur.class).getSingleResult();
+            id = u.getId() + 1;
+            utilisateur.setId(id);
+            getEntityManager().persist(utilisateur);
+
+        } catch (Exception e) {
+        } finally {
+            utilisateur.setId(id);
+            getEntityManager().persist(utilisateur);
+        }
+
     }
 
     public String getUserByPseudoEtMotDePasse(String pseudo, String motdepasse) {

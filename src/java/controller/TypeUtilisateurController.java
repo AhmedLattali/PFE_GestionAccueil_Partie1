@@ -87,20 +87,22 @@ public class TypeUtilisateurController implements Serializable {
             try {
                 if (persistAction != PersistAction.DELETE) {
                     getFacade().edit(selected);
+                     JsfUtil.addSuccessMessage(successMessage);
                 } else {
-                    getFacade().remove(selected);
+                   if(getFacade().remove2(selected)==true){
+                        JsfUtil.addSuccessMessage(successMessage);
+                   }
                 }
-                JsfUtil.addSuccessMessage(successMessage);
+               
             } catch (EJBException ex) {
                 String msg = "";
                 Throwable cause = ex.getCause();
                 if (cause != null) {
+                  
                     msg = cause.getLocalizedMessage();
                 }
-                if (msg.length() > 0) {
-                    JsfUtil.addErrorMessage(msg);
-                } else {
-                    JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+                if (!(msg.length() > 0)) {
+                        
                 }
             } catch (Exception ex) {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);

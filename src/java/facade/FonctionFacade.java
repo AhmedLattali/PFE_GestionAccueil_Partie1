@@ -5,9 +5,12 @@
  */
 package facade;
 
+import controller.util.JsfUtil;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 import model.Fonction;
 
 /**
@@ -27,6 +30,28 @@ public class FonctionFacade extends AbstractFacade<Fonction> {
 
     public FonctionFacade() {
         super(Fonction.class);
+    }
+
+   
+  
+    public boolean remove2(Fonction f) {
+        getEntityManager().remove(getEntityManager().merge(f));
+        try {
+            getEntityManager().flush();
+            return true ;
+        } catch (PersistenceException e) {
+            /*  Throwable cause = e.getCause();
+            String msg = cause.getLocalizedMessage();
+            String a = (msg.split("Détail :"))[1];
+            String detail = a.split("Error")[0];
+
+            System.out.println("catchtiha f remove" + a);
+            System.out.println("catchtiha f remove" + detail);
+            JsfUtil.addErrorMessage(detail);*/
+            JsfUtil.addErrorMessage("Cette fonction ne peut pas étre supprimée car elle est toujours réferencée par un utilisateur.");
+            return false ;
+
+        }
     }
 
 }

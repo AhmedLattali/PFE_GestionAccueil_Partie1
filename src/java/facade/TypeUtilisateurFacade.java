@@ -5,9 +5,12 @@
  */
 package facade;
 
+import controller.util.JsfUtil;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
+import model.Fonction;
 import model.TypeUtilisateur;
 
 /**
@@ -27,6 +30,29 @@ public class TypeUtilisateurFacade extends AbstractFacade<TypeUtilisateur> {
 
     public TypeUtilisateurFacade() {
         super(TypeUtilisateur.class);
+    }
+
+  
+    public boolean remove2(TypeUtilisateur t) {
+        getEntityManager().remove(getEntityManager().merge(t));
+        try {
+            getEntityManager().flush();
+            return true ;
+        } catch (PersistenceException e) {
+            /*  Throwable cause = e.getCause();
+            String msg = cause.getLocalizedMessage();
+            String a = (msg.split("Détail :"))[1];
+            String detail = a.split("Error")[0];
+
+            System.out.println("catchtiha f remove" + a);
+            System.out.println("catchtiha f remove" + detail);
+            JsfUtil.addErrorMessage(detail);*/
+            JsfUtil.addErrorMessage("Ce type utilisateur ne peut pas étre supprimé car il est toujours réferencé par un utilisateur.");
+            return false ;
+
+        }
+        
+
     }
 
 }

@@ -6,6 +6,7 @@ import controller.util.JsfUtil.PersistAction;
 import facade.UtilisateurFacade;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -38,7 +39,6 @@ public class UtilisateurController implements Serializable {
 
     public String loginControl() {
         String s = "a";
-        System.out.println("a");
         s = getFacade().getUserByPseudoEtMotDePasse(user.getPseudo(), user.getMotdepasse());
         if (s.equals("")) {
             RequestContext.getCurrentInstance().update("growl");
@@ -136,18 +136,22 @@ public class UtilisateurController implements Serializable {
 
                 }
                 JsfUtil.addSuccessMessage(successMessage);
-            } catch (EJBException ex) {
+            }catch (EJBException ex) {
                 String msg = "";
+              
                 Throwable cause = ex.getCause();
                 if (cause != null) {
                     msg = cause.getLocalizedMessage();
                 }
                 if (msg.length() > 0) {
+                msg = "la valeur d'un attribut dupliqué rompt la contrainte d'unicité";
                     JsfUtil.addErrorMessage(msg);
                 } else {
                     JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
                 }
-            } catch (Exception ex) {
+                System.out.println(msg);
+            }catch (Exception ex) {
+                
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
                 JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             }
@@ -243,6 +247,7 @@ public class UtilisateurController implements Serializable {
         public void closeDialog(){
             RequestContext.getCurrentInstance().closeDialog(this);
         }
+        
 
     }
 
