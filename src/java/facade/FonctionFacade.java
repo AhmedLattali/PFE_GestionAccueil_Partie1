@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import model.Fonction;
+import model.Utilisateur;
 
 /**
  *
@@ -32,25 +33,31 @@ public class FonctionFacade extends AbstractFacade<Fonction> {
         super(Fonction.class);
     }
 
-   
+        public boolean create2(Fonction t) {
+          try {
+             getEntityManager().persist(t);
+             getEntityManager().flush();
+             return true ;
+         } catch (PersistenceException e) {
+              JsfUtil.addErrorMessage("Cette fonction existe déja");
+              JsfUtil.validationFailed();
+              return false ;
+         }
+     }
   
+    
     public boolean remove2(Fonction f) {
-        getEntityManager().remove(getEntityManager().merge(f));
-        try {
-            getEntityManager().flush();
-            return true ;
-        } catch (PersistenceException e) {
-            /*  Throwable cause = e.getCause();
-            String msg = cause.getLocalizedMessage();
-            String a = (msg.split("Détail :"))[1];
-            String detail = a.split("Error")[0];
-
-            System.out.println("catchtiha f remove" + a);
-            System.out.println("catchtiha f remove" + detail);
-            JsfUtil.addErrorMessage(detail);*/
-            JsfUtil.addErrorMessage("Cette fonction ne peut pas étre supprimée car elle est toujours réferencée par un utilisateur.");
-            return false ;
-
+        List<Utilisateur> list;
+        list = getEntityManager().createNamedQuery("Utilisateur.findByFonction", Utilisateur.class).
+                setParameter("libele_fonction", f.getLibeleFonction()).getResultList();
+        if (!list.isEmpty()) {
+          //  System.out.println("koko" + list.get(0).getId());
+             JsfUtil.addErrorMessage("Cette fonction ne peut pas étre supprimée car elle est toujours réferencée par un utilisateur.");
+            return false;
+        } else {
+            System.out.println("list == null remove ");
+            getEntityManager().remove(getEntityManager().merge(f));
+            return true;
         }
     }
 

@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <f:facet name="a">
+            <h:outputStylesheet name="css/sidebar_menu.css" />
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+
+            <h:outputScript name="js/sidebar_menu.js" />
+        </f:facet>
+
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                <br></br>
+                <br></br>
+
+                <li class="active">
+                    <h:link outcome="/accueil_agent"><span class="fa-stack fa-lg pull-left"><i class="fa fa-bank fa-stack-1x "></i></span>Accueil</h:link>
+                </li>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-th-large fa-stack-1x"></i></span>Gestion des affaires</a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <h:link outcome="/utilisateur/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list fa-stack-1x "></i></span>Liste des affaires</h:link>
+                    </ul>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <h:link outcome="/utilisateur/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-plus fa-stack-1x "></i></span>Insérer des affaires</h:link>
+                    </ul>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <h:link outcome="/utilisateur/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-question fa-stack-1x "></i></span>Manuel des affaires</h:link>
+                    </ul>
+                </li>
+                <br></br>
+                <li>
+                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-envelope fa-stack-1x "></i></span>Contacter l'administrateur</a>
+                </li>
+                <br/>
+                <br/><br/>
+
+                <li>
+                    <h:form>       
+                        <p:commandLink action="#{utilisateurController.logout}" ajax="false">
+                            <h:outputText value="Déconnection" /><span class="fa-stack fa-lg pull-left" ><i class="fa fa-sign-out fa-stack-1x "></i></span>
+                        </p:commandLink>
+                    </h:form>
+                </li>
+
+            </ul>
+        </div>      
+    </ui:composition>
+</html>

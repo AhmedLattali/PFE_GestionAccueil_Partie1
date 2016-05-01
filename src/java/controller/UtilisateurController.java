@@ -125,17 +125,22 @@ public class UtilisateurController implements Serializable {
             try {
                 switch (persistAction) {
                     case CREATE:
-                        getFacade().create(selected);
+                       if(getFacade().create2(selected)==true ){
+                             JsfUtil.addSuccessMessage(successMessage);
+                       }
                         break;
                     case UPDATE:
-                        getFacade().edit(selected);
+                       if(getFacade().edit2(selected)==true ){
+                             JsfUtil.addSuccessMessage(successMessage);
+                       }
                         break;
                     case DELETE:
                         getFacade().remove(selected);
+                          JsfUtil.addSuccessMessage(successMessage);
                         break;
 
                 }
-                JsfUtil.addSuccessMessage(successMessage);
+              
             }catch (EJBException ex) {
                 String msg = "";
               

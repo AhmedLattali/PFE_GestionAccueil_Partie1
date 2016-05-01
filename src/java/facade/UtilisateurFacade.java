@@ -5,9 +5,11 @@
  */
 package facade;
 
+import controller.util.JsfUtil;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 import javax.servlet.http.HttpSession;
 import model.Utilisateur;
 import utilitaire.Util;
@@ -31,21 +33,42 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> {
         super(Utilisateur.class);
     }
 
-    @Override
-    public void create(Utilisateur utilisateur) {
+    public boolean edit2(Utilisateur utilisateur) {
+        getEntityManager().merge(utilisateur);
+        try {
+            getEntityManager().flush();
+            return true;
+        } catch (PersistenceException e) {
+            JsfUtil.addErrorMessage("Un attribut dupliqué rompt la contrainte d'unicité");
+            JsfUtil.validationFailed();
+            return false;
+        }
+
+    }
+
+    public boolean create2(Utilisateur utilisateur) {
         int id = 1;
         try {
             Utilisateur u = getEntityManager().createNamedQuery("Utilisateur.findMaxId", Utilisateur.class).getSingleResult();
             id = u.getId() + 1;
             utilisateur.setId(id);
             getEntityManager().persist(utilisateur);
+            try {
+                getEntityManager().flush();
+                return true;
+            } catch (PersistenceException e) {
+                JsfUtil.addErrorMessage("Un attribut dupliqué rompt la contrainte d'unicité");
+                JsfUtil.validationFailed();
+                return false;
+            }
 
         } catch (Exception e) {
         } finally {
             utilisateur.setId(id);
             getEntityManager().persist(utilisateur);
-        }
 
+        }
+        return true;
     }
 
     public String getUserByPseudoEtMotDePasse(String pseudo, String motdepasse) {

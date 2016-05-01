@@ -36,8 +36,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Utilisateur.findByTelephone", query = "SELECT u FROM Utilisateur u WHERE u.telephone = :telephone"),
     @NamedQuery(name = "Utilisateur.findByEmail", query = "SELECT u FROM Utilisateur u WHERE u.email = :email"),
     @NamedQuery(name = "Utilisateur.findByMotdepasse", query = "SELECT u FROM Utilisateur u WHERE u.motdepasse = :motdepasse"),
-     @NamedQuery(name = "Utilisateur.findMaxId", query = "select U from Utilisateur u WHERE u.id = ( select max(u2.id) from Utilisateur u2)")
-
+    @NamedQuery(name = "Utilisateur.findMaxId", query = "select U from Utilisateur u WHERE u.id = ( select max(u2.id) from Utilisateur u2)"),
+    @NamedQuery(name = "Utilisateur.findByTypeUtilisateur", query = "SELECT u FROM Utilisateur u WHERE u.typeUtilisateur.libeleTypeUtilisateur = :type_utilisateur"),
+    @NamedQuery(name = "Utilisateur.findByFonction", query = "SELECT u FROM Utilisateur u WHERE u.fonction.libeleFonction = :libele_fonction")
 })
 public class Utilisateur implements Serializable {
 

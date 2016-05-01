@@ -66,4 +66,8 @@ public class JsfUtil {
         DELETE,
         UPDATE
     }
+    public static void validationFailed(){
+          FacesContext.getCurrentInstance().validationFailed();
+          
+    }
 }

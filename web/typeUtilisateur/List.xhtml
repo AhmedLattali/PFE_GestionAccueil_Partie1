@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/templates/default/main.xhtml">
+    <ui:composition template="/templates/admin/template_admin.xhtml">
 
 
         <ui:define name="content">
@@ -24,8 +24,8 @@
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowSelect"   update="createButton viewButton  deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton  deleteButton"/>
 
                         <p:column>
                             <f:facet name="header">
@@ -36,7 +36,6 @@
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{typeUtilisateurController.prepareCreate}" update=":TypeUtilisateurCreateForm" oncomplete="PF('TypeUtilisateurCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TypeUtilisateurViewForm" oncomplete="PF('TypeUtilisateurViewDialog').show()" disabled="#{empty typeUtilisateurController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TypeUtilisateurEditForm" oncomplete="PF('TypeUtilisateurEditDialog').show()" disabled="#{empty typeUtilisateurController.selected}"/>
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" update=":TypeUtilisateurDeleteForm" oncomplete="PF('TypeUtilisateurDeleteDialog').show()" disabled="#{empty typeUtilisateurController.selected}"/>
                         </f:facet>
                     </p:dataTable>
@@ -44,7 +43,6 @@
             </h:form>
 
             <ui:include src="Create.xhtml"/>
-            <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>
               <ui:include src="Delete.xhtml"/>
         </ui:define>

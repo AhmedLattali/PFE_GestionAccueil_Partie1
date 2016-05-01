@@ -86,7 +86,21 @@ public class FonctionController implements Serializable {
         if (selected != null) {
             setEmbeddableKeys();
             try {
-                if (persistAction != PersistAction.DELETE) {
+                switch (persistAction) {
+                    case CREATE:
+                        if (getFacade().create2(selected) == true) {
+                            JsfUtil.addSuccessMessage(successMessage);
+                        }
+
+                        break;
+                    case DELETE:
+                        if (getFacade().remove2(selected) == true) {
+                            JsfUtil.addSuccessMessage(successMessage);
+                        }
+                        break;
+
+                }
+                /* if (persistAction != PersistAction.DELETE) {
                     getFacade().edit(selected);
                     JsfUtil.addSuccessMessage(successMessage);
                 } else {
@@ -95,8 +109,8 @@ public class FonctionController implements Serializable {
                         JsfUtil.addSuccessMessage(successMessage);
                         
                     }
-                }
-                
+                }*/
+
             } catch (EJBException ex) {
                 String msg = "";
                 Throwable cause = ex.getCause();
