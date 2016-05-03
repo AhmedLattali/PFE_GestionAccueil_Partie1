@@ -48,15 +48,17 @@ public class UtilisateurController implements Serializable {
             // return "/accueil_agent.xhtml";
             // A supprimer aprés
 
-        } else // get Http Session and store username
+        } else// get Http Session and store username
         //HttpSession session = Util.getSession();
         //session.setAttribute("usersession", user);
         {
             if (s.equals("Administrateur")) {
+                return "/admin_pages/accueil_admin.xhtml?faces-redirect=true";
+                
 
-                return "accueil_admin.xhtml?faces-redirect=true";
+                
             } else {
-                return "accueil_agent.xhtml?faces-redirect=true";
+                return "/agent_pages/accueil_agent.xhtml?faces-redirect=true";
             }
         }
         return "";
@@ -66,7 +68,7 @@ public class UtilisateurController implements Serializable {
     public String logout() {
         HttpSession session = Util.getSession();
         session.invalidate();
-        return "login.xhtml?faces-redirect=true";
+        return "/faces/login.xhtml?faces-redirect=true";
     }
 
     public Utilisateur getSelected() {

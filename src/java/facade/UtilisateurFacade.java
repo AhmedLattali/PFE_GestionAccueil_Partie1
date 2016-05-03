@@ -79,6 +79,7 @@ public class UtilisateurFacade extends AbstractFacade<Utilisateur> {
                 // get Http Session and store username
                 HttpSession session = Util.getSession();
                 session.setAttribute("usersession", user);
+                System.out.println(session.getAttribute("usersession").toString());
                 System.out.println(user.getTypeUtilisateur().toString());
 
                 return user.getTypeUtilisateur().getLibeleTypeUtilisateur();
