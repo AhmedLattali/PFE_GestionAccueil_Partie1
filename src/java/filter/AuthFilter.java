@@ -34,13 +34,13 @@ public class AuthFilter implements Filter {
             //  allow user to proccede if url is login.xhtml or user logged in or user is accessing any page in //public folder
             String reqURI = req.getRequestURI();
 
-            // Enlever commentaire aprés
+            /* Enlever commentaire aprés
             if ( reqURI.indexOf("/faces/login.xhtml") >= 0 || (ses != null && ses.getAttribute("usersession") != null)
                                        || reqURI.indexOf("/public/") >= 0 || reqURI.contains("javax.faces.resource") )
                    chain.doFilter(request, response);
             else   // user didn't log in but asking for a page that is not allowed so take user to login page
                    res.sendRedirect(req.getContextPath() + "/faces/login.xhtml");  // Anonymous user. Redirect to login page*/
-           // chain.doFilter(request, response);
+            chain.doFilter(request, response);
         } catch (Throwable t) {
             System.out.println(t.getMessage());
         }

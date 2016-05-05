@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SolutionEditDlg" widgetVar="SolutionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle2.EditSolutionTitle}">
+            <h:form id="SolutionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{solutionController.selected != null}">
+                        <p:outputLabel value="#{bundle2.EditSolutionLabel_id}" for="id" />
+                        <p:inputText disabled="true" id="id" value="#{solutionController.selected.id}" title="#{bundle2.EditSolutionTitle_id}" required="true" requiredMessage="#{bundle2.EditSolutionRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle2.EditSolutionLabel_affaireid}" for="affaireid" />
+                        <p:selectOneMenu id="affaireid" value="#{solutionController.selected.affaireid}" required="true" requiredMessage="#{bundle2.EditSolutionRequiredMessage_affaireid}">
+                            <f:selectItem itemLabel="#{bundle2.SelectOneMessage}"/>
+                            <f:selectItems value="#{affaireController.itemsAvailableSelectOne}"
+                                           var="affaireidItem"
+                                           itemValue="#{affaireidItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{solutionController.update}" value="#{bundle2.Save}" update="display,:SolutionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SolutionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" oncomplete="handleSubmit(args,'SolutionEditDialog');"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

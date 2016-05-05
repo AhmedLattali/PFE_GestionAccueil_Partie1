@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AffaireEditDlg" widgetVar="AffaireEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle2.EditAffaireTitle}">
+            <h:form id="AffaireEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{affaireController.selected != null}">
+                        <p:outputLabel value="#{bundle2.EditAffaireLabel_id}" for="id" />
+                        <p:inputText id="id"  disabled="true" value="#{affaireController.selected.id}" title="#{bundle2.EditAffaireTitle_id}" required="true" requiredMessage="#{bundle2.EditAffaireRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle2.EditAffaireLabel_code}" for="code" />
+                        <p:inputText id="code" value="#{affaireController.selected.code}" title="#{bundle2.EditAffaireTitle_code}" required="true" requiredMessage="#{bundle2.EditAffaireRequiredMessage_code}"/>
+                        <p:outputLabel value="#{bundle2.EditAffaireLabel_libeleAffaire}" for="libeleAffaire" />
+                        <p:inputText id="libeleAffaire" value="#{affaireController.selected.libeleAffaire}" title="#{bundle2.EditAffaireTitle_libeleAffaire}" required="true" requiredMessage="#{bundle2.EditAffaireRequiredMessage_libeleAffaire}"/>
+
+                        <p:outputLabel value="#{bundle2.EditAffaireLabel_typeContrat}" for="typeContrat" />
+                        <p:selectOneMenu id="typeContrat" value="#{affaireController.selected.typeContrat}" required="true" requiredMessage="#{bundle2.EditAffaireRequiredMessage_typeContrat}">
+                            <f:selectItem itemLabel="#{bundle2.SelectOneMessage}"/>
+                            <f:selectItems value="#{typeContratController.itemsAvailableSelectOne}"
+                                           var="typeContratItem"
+                                           itemValue="#{typeContratItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle2.EditAffaireLabel_typeEnergie}" for="typeEnergie" />
+                        <p:selectOneMenu id="typeEnergie" value="#{affaireController.selected.typeEnergie}" required="true" requiredMessage="#{bundle2.EditAffaireRequiredMessage_typeEnergie}">
+                            <f:selectItem itemLabel="#{bundle2.SelectOneMessage}"/>
+                            <f:selectItems value="#{typeEnergieController.itemsAvailableSelectOne}"
+                                           var="typeEnergieItem"
+                                           itemValue="#{typeEnergieItem}"/>
+                        </p:selectOneMenu>
+                       <p:outputLabel value="#{bundle2.EditAffaireLabel_presentation}" for="presentation" />
+                        <p:inputTextarea  id="presentation" value="#{affaireController.selected.presentation}" title="#{bundle2.EditAffaireTitle_presentation}"  rows="10" cols="40" counter="display2" maxlength="1500" counterTemplate="{0} characters restantes." autoResize="false" />
+                        <h:outputText id="display2" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{affaireController.update}" value="#{bundle2.Save}" update="display,:AffaireListForm:datalist,:growl" oncomplete="handleSubmit(args, 'AffaireEditDialog');"/>
+                    <p:commandButton immediate="true" value="#{bundle2.Cancel}"  oncomplete="handleSubmit(args,'AffaireEditDialog');"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
