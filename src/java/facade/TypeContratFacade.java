@@ -45,11 +45,11 @@ public class TypeContratFacade extends AbstractFacade<TypeContrat> {
     }
 
     public boolean remove2(TypeContrat t) {
-                List<Affaire> list;
+        List<Affaire> list;
         list = getEntityManager().createNamedQuery("Affaire.findByTypeContrat", Affaire.class).
                 setParameter("type_contrat", t.getLibeleTypeContrat()).getResultList();
         if (!list.isEmpty()) {
-          //  System.out.println("koko" + list.get(0).getId());
+            //  System.out.println("koko" + list.get(0).getId());
             JsfUtil.addErrorMessage("Ce type contrat ne peut pas étre supprimé car il est toujours réferencé par une affaire.");
             return false;
         } else {

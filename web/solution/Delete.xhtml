@@ -13,7 +13,7 @@
             <h:form id="SolutionDeleteForm" >
                 <h:panelGroup id="display" >
                     <p>Vous étes sur de suprimer cette solution ?</p>
-                    
+
                     <p:commandButton  actionListener="#{solutionController.destroy}" value="#{bundle.Confirmer}" update="display,:SolutionListForm:datalist,:growl" oncomplete="handleSubmit(args,'SolutionDeleteDialog');" icon="ui-icon-check"/>
                     <p:commandButton  immediate="true" value="#{bundle.Cancel}" oncomplete="handleSubmit(args,'SolutionDeleteDialog');" icon="ui-icon-close" styleClass="buttons">                                               
 

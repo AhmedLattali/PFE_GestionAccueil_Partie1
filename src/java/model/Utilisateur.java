@@ -50,7 +50,7 @@ public class Utilisateur implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "id")
-   // @GeneratedValue(strategy = GenerationType.AUTO)
+    // @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Size(max = 64)
     @Column(name = "nom")

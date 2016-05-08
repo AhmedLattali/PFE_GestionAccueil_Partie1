@@ -6,11 +6,13 @@
 package facade;
 
 import controller.util.JsfUtil;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import model.Question;
+import model.Reponse;
 
 /**
  *
@@ -31,7 +33,7 @@ public class QuestionFacade extends AbstractFacade<Question> {
         super(Question.class);
     }
 
-        public boolean create2(Question question) {
+    public boolean create2(Question question) {
         int id = 1;
         try {
             Question q = getEntityManager().createNamedQuery("Question.findMaxId", Question.class).getSingleResult();
@@ -57,8 +59,18 @@ public class QuestionFacade extends AbstractFacade<Question> {
     }
 
     public boolean remove2(Question question) {
-         getEntityManager().remove(getEntityManager().merge(question));
-         return true;
+        List<Reponse> list;
+        list = getEntityManager().createNamedQuery("Reponse.findByQuestionID", Reponse.class).
+                setParameter("question_id", question.getId()).getResultList();
+        if (!list.isEmpty()) {
+            //  System.out.println("koko" + list.get(0).getId());
+            JsfUtil.addErrorMessage("Cette solution ne peut pas étre supprimée car elle est toujours réferencée par une réponse.");
+            return false;
+        } else {
+            System.out.println("list == null remove ");
+            getEntityManager().remove(getEntityManager().merge(question));
+            return true;
+        }
     }
 
 }

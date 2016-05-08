@@ -37,7 +37,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle2.ListSolutionTitle_affaireid}"/>
                             </f:facet>
-                            <h:outputText value="#{item.affaireid}"/>
+                            <h:outputText value="#{item.affaireid.toString()}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle2.Create}" actionListener="#{solutionController.prepareCreate}" update=":SolutionCreateForm" oncomplete="PF('SolutionCreateDialog').show()"/>

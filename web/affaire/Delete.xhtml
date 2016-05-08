@@ -13,7 +13,7 @@
             <h:form id="AffaireDeleteForm" >
                 <h:panelGroup id="display" >
                     <p>Vous étes sur de supprimer cette affaire ?</p>
-                    
+
                     <p:commandButton  actionListener="#{affaireController.destroy}" value="#{bundle.Confirmer}" update="display,:AffaireListForm:datalist,:growl" oncomplete="handleSubmit(args,'AffaireDeleteDialog');" icon="ui-icon-check"/>
                     <p:commandButton  immediate="true" value="#{bundle.Cancel}" oncomplete="handleSubmit(args,'AffaireDeleteDialog');" icon="ui-icon-close">                                               
 

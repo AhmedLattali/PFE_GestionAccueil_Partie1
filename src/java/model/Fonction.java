@@ -89,7 +89,7 @@ public class Fonction implements Serializable {
 
     @Override
     public String toString() {
-        return libeleFonction ;
+        return libeleFonction;
     }
 
 }

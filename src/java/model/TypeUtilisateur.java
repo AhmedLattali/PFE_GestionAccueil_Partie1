@@ -89,7 +89,7 @@ public class TypeUtilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return libeleTypeUtilisateur ;
+        return libeleTypeUtilisateur;
     }
 
 }

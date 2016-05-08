@@ -43,13 +43,13 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle2.ListReponseTitle_questionSuivantId}"/>
                             </f:facet>
-                            <h:outputText value="#{item.questionSuivantId}"/>
+                            <h:outputText value="#{item.questionSuivantId.toString()}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle2.ListReponseTitle_solutionid}"/>
                             </f:facet>
-                            <h:outputText value="#{item.solutionid}"/>
+                            <h:outputText value="#{item.solutionid.toString()}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle2.Create}" actionListener="#{reponseController.prepareCreate}" update=":ReponseCreateForm" oncomplete="PF('ReponseCreateDialog').show()"/>

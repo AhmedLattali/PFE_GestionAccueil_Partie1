@@ -13,7 +13,7 @@
             <h:form id="UtilisateurDeleteForm" >
                 <h:panelGroup id="display" >
                     <p>Vous étes sur de supprimer cet utilisateur ?</p>
-                    
+
                     <p:commandButton  actionListener="#{utilisateurController.destroy}" value="#{bundle.Confirmer}" update="display,:UtilisateurListForm:datalist,:growl" oncomplete="handleSubmit(args,'UtilisateurDeleteDialog');" icon="ui-icon-check"/>
                     <p:commandButton  immediate="true" value="#{bundle.Cancel}" oncomplete="handleSubmit(args,'UtilisateurDeleteDialog');" icon="ui-icon-close">                                               
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="QuestionReponseProposeeViewDlg" widgetVar="QuestionReponseProposeeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle3.ViewQuestionReponseProposeeTitle}">
+            <h:form id="QuestionReponseProposeeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{questionReponseProposeeController.selected != null}">
+                        <h:outputText value="#{bundle3.ViewQuestionReponseProposeeLabel_questionReponseProposeePK_reponseid}"/>
+                        <h:outputText value="#{questionReponseProposeeController.selected.questionReponseProposeePK.reponseid}" title="#{bundle3.ViewQuestionReponseProposeeTitle_questionReponseProposeePK_reponseid}"/>
+                        <h:outputText value="#{bundle3.ViewQuestionReponseProposeeLabel_questionReponseProposeePK_questionid}"/>
+                        <h:outputText value="#{questionReponseProposeeController.selected.questionReponseProposeePK.questionid}" title="#{bundle3.ViewQuestionReponseProposeeTitle_questionReponseProposeePK_questionid}"/>
+                        <h:outputText value="#{bundle3.ViewQuestionReponseProposeeLabel_libele}"/>
+                        <h:outputText value="#{questionReponseProposeeController.selected.libele}" title="#{bundle3.ViewQuestionReponseProposeeTitle_libele}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle3.Close}" onclick="QuestionReponseProposeeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

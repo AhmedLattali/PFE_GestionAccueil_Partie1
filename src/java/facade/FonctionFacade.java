@@ -33,26 +33,25 @@ public class FonctionFacade extends AbstractFacade<Fonction> {
         super(Fonction.class);
     }
 
-        public boolean create2(Fonction t) {
-          try {
-             getEntityManager().persist(t);
-             getEntityManager().flush();
-             return true ;
-         } catch (PersistenceException e) {
-              JsfUtil.addErrorMessage("Cette fonction existe déja");
-              JsfUtil.validationFailed();
-              return false ;
-         }
-     }
-  
-    
+    public boolean create2(Fonction t) {
+        try {
+            getEntityManager().persist(t);
+            getEntityManager().flush();
+            return true;
+        } catch (PersistenceException e) {
+            JsfUtil.addErrorMessage("Cette fonction existe déja");
+            JsfUtil.validationFailed();
+            return false;
+        }
+    }
+
     public boolean remove2(Fonction f) {
         List<Utilisateur> list;
         list = getEntityManager().createNamedQuery("Utilisateur.findByFonction", Utilisateur.class).
                 setParameter("libele_fonction", f.getLibeleFonction()).getResultList();
         if (!list.isEmpty()) {
-          //  System.out.println("koko" + list.get(0).getId());
-             JsfUtil.addErrorMessage("Cette fonction ne peut pas étre supprimée car elle est toujours réferencée par un utilisateur.");
+            //  System.out.println("koko" + list.get(0).getId());
+            JsfUtil.addErrorMessage("Cette fonction ne peut pas étre supprimée car elle est toujours réferencée par un utilisateur.");
             return false;
         } else {
             System.out.println("list == null remove ");

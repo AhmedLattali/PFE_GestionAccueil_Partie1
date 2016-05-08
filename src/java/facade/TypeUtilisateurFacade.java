@@ -45,17 +45,16 @@ public class TypeUtilisateurFacade extends AbstractFacade<TypeUtilisateur> {
         }
     }
 
-
     public boolean remove2(TypeUtilisateur t) {
         List<Utilisateur> list;
         list = getEntityManager().createNamedQuery("Utilisateur.findByTypeUtilisateur", Utilisateur.class).
                 setParameter("type_utilisateur", t.getLibeleTypeUtilisateur()).getResultList();
         if (!list.isEmpty()) {
-            if((list.get(0).getTypeUtilisateur().getLibeleTypeUtilisateur()).equals("Administrateur")){
-                            JsfUtil.addErrorMessage("le type utlisateur Administrateur est protégé et ne peut étre supprimé");
-            return false;
+            if ((list.get(0).getTypeUtilisateur().getLibeleTypeUtilisateur()).equals("Administrateur")) {
+                JsfUtil.addErrorMessage("le type utlisateur Administrateur est protégé et ne peut étre supprimé");
+                return false;
             }
-          //  System.out.println("koko" + list.get(0).getId());
+            //  System.out.println("koko" + list.get(0).getId());
             JsfUtil.addErrorMessage("Ce type utilisateur ne peut pas étre supprimé car il est toujours réferencé par un utilisateur.");
             return false;
         } else {

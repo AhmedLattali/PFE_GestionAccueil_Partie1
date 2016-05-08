@@ -13,7 +13,7 @@
             <h:form id="TypeEnergieDeleteForm" >
                 <h:panelGroup id="display" >
                     <p>Vous étes sur de suprimer ce type Energie ?</p>
-                    
+
                     <p:commandButton  actionListener="#{typeEnergieController.destroy}" value="#{bundle.Confirmer}" update="display,:TypeEnergieListForm:datalist,:growl" oncomplete="handleSubmit(args,'TypeEnergieDeleteDialog');" icon="ui-icon-check"/>
                     <p:commandButton  immediate="true" value="#{bundle.Cancel}" oncomplete="handleSubmit(args,'TypeEnergieDeleteDialog');" icon="ui-icon-close" styleClass="buttons">                                               
 

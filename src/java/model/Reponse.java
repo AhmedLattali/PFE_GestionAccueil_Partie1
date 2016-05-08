@@ -33,8 +33,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Reponse.findAll", query = "SELECT r FROM Reponse r"),
     @NamedQuery(name = "Reponse.findById", query = "SELECT r FROM Reponse r WHERE r.id = :id"),
-     @NamedQuery(name = "Reponse.findMaxId", query = "select r from Reponse r WHERE r.id = ( select max(r2.id) from Reponse r2)"),
-    @NamedQuery(name = "Reponse.findByLibeleReponse", query = "SELECT r FROM Reponse r WHERE r.libeleReponse = :libeleReponse")})
+    @NamedQuery(name = "Reponse.findMaxId", query = "select r from Reponse r WHERE r.id = ( select max(r2.id) from Reponse r2)"),
+    @NamedQuery(name = "Reponse.findByLibeleReponse", query = "SELECT r FROM Reponse r WHERE r.libeleReponse = :libeleReponse"),
+    @NamedQuery(name = "Reponse.findBySolutionID", query = "SELECT r FROM Reponse r WHERE r.solutionid.id = :solution_id"),
+    @NamedQuery(name = "Reponse.findByQuestionID", query = "SELECT r FROM Reponse r WHERE r.questionSuivantId.id = :question_id")})
 public class Reponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -135,7 +137,7 @@ public class Reponse implements Serializable {
 
     @Override
     public String toString() {
-         return id.toString()+":"+libeleReponse;
+        return id.toString() + ":" + libeleReponse;
     }
-    
+
 }

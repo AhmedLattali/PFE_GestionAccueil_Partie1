@@ -4,12 +4,12 @@ function handleSubmit(args, dialog) {
         jqDialog.effect('shake', {times: 3}, 100);
     } else {
         PF(dialog).hide();
-        
+
     }
 }
 
-function destroy(args, dialog){
-    
+function destroy(args, dialog) {
+
     PF(dialog).hide();
 
 }

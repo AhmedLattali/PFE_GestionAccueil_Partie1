@@ -13,9 +13,22 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{questionController.selected != null}">
                         <p:outputLabel value="#{bundle2.EditQuestionLabel_id}" for="id" />
-                        <p:inputText disabled="true" id="id" value="#{questionController.selected.id}" title="#{bundle2.EditQuestionTitle_id}" required="true" requiredMessage="#{bundle2.EditQuestionRequiredMessage_id}"/>
+                        <p:inputText size="45" disabled="true" id="id" value="#{questionController.selected.id}" title="#{bundle2.EditQuestionTitle_id}" required="true" requiredMessage="#{bundle2.EditQuestionRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle2.EditQuestionLabel_libeleQuestion}" for="libeleQuestion" />
-                        <p:inputText id="libeleQuestion" value="#{questionController.selected.libeleQuestion}" title="#{bundle2.EditQuestionTitle_libeleQuestion}" required="true" requiredMessage="#{bundle2.EditQuestionRequiredMessage_libeleQuestion}"/>
+                        <p:inputText size="45" id="libeleQuestion" value="#{questionController.selected.libeleQuestion}" title="#{bundle2.EditQuestionTitle_libeleQuestion}" required="true" requiredMessage="#{bundle2.EditQuestionRequiredMessage_libeleQuestion}"/>
+                        <p:outputLabel value="Affecter des réponses"  />
+                        <p:selectManyMenu style="width: 380px !important" id="solutions" value="#{questionController.reponsesSelected}" 
+                                          var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
+                            <f:selectItems value="#{reponseController.getItems()}" var="reponse" itemLabel="#{reponse.libeleReponse}" itemValue="#{reponse}" />
+
+                            <p:column>
+                                <h:outputText styleClass="ui-theme ui-theme-#{t.id}" />
+                            </p:column>
+
+                            <p:column>
+                                <h:outputText value="#{t.libeleReponse}" />
+                            </p:column>
+                        </p:selectManyMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{questionController.update}" value="#{bundle2.Save}" update="display,:QuestionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'QuestionEditDialog');"/>
                     <p:commandButton immediate="true" value="#{bundle.Cancel}" oncomplete="handleSubmit(args,'QuestionEditDialog');"/>

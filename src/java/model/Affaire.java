@@ -164,5 +164,5 @@ public class Affaire implements Serializable {
     public String toString() {
         return code + ":" + libeleAffaire;
     }
-    
+
 }

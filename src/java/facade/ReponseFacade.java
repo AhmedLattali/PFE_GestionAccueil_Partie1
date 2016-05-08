@@ -6,6 +6,7 @@
 package facade;
 
 import controller.util.JsfUtil;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,6 +31,7 @@ public class ReponseFacade extends AbstractFacade<Reponse> {
     public ReponseFacade() {
         super(Reponse.class);
     }
+    
 
     public boolean create2(Reponse reponse) {
         int id = 1;
@@ -57,8 +59,14 @@ public class ReponseFacade extends AbstractFacade<Reponse> {
     }
 
     public boolean remove2(Reponse reponse) {
-         getEntityManager().remove(getEntityManager().merge(reponse));
-         return true ;
+        getEntityManager().remove(getEntityManager().merge(reponse));
+        return true;
+    }
+    
+        public Reponse getReponseByID(int reponse_id){
+                return getEntityManager().createNamedQuery("Reponse.findById", Reponse.class).setParameter("id", reponse_id).getSingleResult();
+
+        
     }
 
 }

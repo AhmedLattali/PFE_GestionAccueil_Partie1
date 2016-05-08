@@ -16,7 +16,7 @@
                 <p:panel styleClass="panel" header="#{bundle2.ListAffaireTitle}">
                     <br/>
                     <br/>
-                    <p:dataTable id="datalist" value="#{affaireController.items}" var="item"
+                    <p:dataTable id="datalist" value="#{affaireController.items}" draggableRows="true" var="item"
                                  selectionMode="single" selection="#{affaireController.selected}"
                                  paginator="true"
                                  rowKey="#{item.id}"
@@ -61,7 +61,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle2.ListAffaireTitle_presentation}"/>
                             </f:facet>
-                            <h:outputText value="#{item.presentation}"/>
+                            <p:commandButton id="viewPresentationButton" style="margin: 0px !important;" value="#{bundle2.View}" update=":AffaireViewPresentationForm" oncomplete="PF('AffaireViewPresentationDialog').show()" />
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle2.Create}" actionListener="#{affaireController.prepareCreate}" update=":AffaireCreateForm" oncomplete="PF('AffaireCreateDialog').show()"/>
@@ -76,7 +76,8 @@
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>
             <ui:include src="View.xhtml"/>
-              <ui:include src="Delete.xhtml"/>
+            <ui:include src="ViewPresentation.xhtml"/>
+            <ui:include src="Delete.xhtml"/>
         </ui:define>
     </ui:composition>
 

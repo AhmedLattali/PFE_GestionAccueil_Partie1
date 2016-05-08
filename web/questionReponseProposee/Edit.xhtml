@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="QuestionReponseProposeeEditDlg" widgetVar="QuestionReponseProposeeEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle3.EditQuestionReponseProposeeTitle}">
+            <h:form id="QuestionReponseProposeeEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{questionReponseProposeeController.selected != null}">
+                        <p:outputLabel value="#{bundle3.EditQuestionReponseProposeeLabel_questionReponseProposeePK_reponseid}" for="questionReponseProposeePK_reponseid" />
+                        <p:inputText id="questionReponseProposeePK_reponseid" value="#{questionReponseProposeeController.selected.questionReponseProposeePK.reponseid}" title="#{bundle3.EditQuestionReponseProposeeTitle_questionReponseProposeePK_reponseid}" required="true" requiredMessage="#{bundle3.EditQuestionReponseProposeeRequiredMessage_questionReponseProposeePK_reponseid}"/>
+                        <p:outputLabel value="#{bundle3.EditQuestionReponseProposeeLabel_questionReponseProposeePK_questionid}" for="questionReponseProposeePK_questionid" />
+                        <p:inputText id="questionReponseProposeePK_questionid" value="#{questionReponseProposeeController.selected.questionReponseProposeePK.questionid}" title="#{bundle3.EditQuestionReponseProposeeTitle_questionReponseProposeePK_questionid}" required="true" requiredMessage="#{bundle3.EditQuestionReponseProposeeRequiredMessage_questionReponseProposeePK_questionid}"/>
+                        <p:outputLabel value="#{bundle3.EditQuestionReponseProposeeLabel_libele}" for="libele" />
+                        <p:inputText id="libele" value="#{questionReponseProposeeController.selected.libele}" title="#{bundle3.EditQuestionReponseProposeeTitle_libele}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{questionReponseProposeeController.update}" value="#{bundle3.Save}" update="display,:QuestionReponseProposeeListForm:datalist,:growl" oncomplete="handleSubmit(args, 'QuestionReponseProposeeEditDialog');"/>
+                    <p:commandButton value="#{bundle3.Cancel}" onclick="QuestionReponseProposeeEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

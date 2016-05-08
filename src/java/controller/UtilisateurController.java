@@ -54,9 +54,7 @@ public class UtilisateurController implements Serializable {
         {
             if (s.equals("Administrateur")) {
                 return "/admin_pages/accueil_admin.xhtml?faces-redirect=true";
-                
 
-                
             } else {
                 return "/agent_pages/accueil_agent.xhtml?faces-redirect=true";
             }
@@ -127,38 +125,38 @@ public class UtilisateurController implements Serializable {
             try {
                 switch (persistAction) {
                     case CREATE:
-                       if(getFacade().create2(selected)==true ){
-                             JsfUtil.addSuccessMessage(successMessage);
-                       }
+                        if (getFacade().create2(selected) == true) {
+                            JsfUtil.addSuccessMessage(successMessage);
+                        }
                         break;
                     case UPDATE:
-                       if(getFacade().edit2(selected)==true ){
-                             JsfUtil.addSuccessMessage(successMessage);
-                       }
+                        if (getFacade().edit2(selected) == true) {
+                            JsfUtil.addSuccessMessage(successMessage);
+                        }
                         break;
                     case DELETE:
                         getFacade().remove(selected);
-                          JsfUtil.addSuccessMessage(successMessage);
+                        JsfUtil.addSuccessMessage(successMessage);
                         break;
 
                 }
-              
-            }catch (EJBException ex) {
+
+            } catch (EJBException ex) {
                 String msg = "";
-              
+
                 Throwable cause = ex.getCause();
                 if (cause != null) {
                     msg = cause.getLocalizedMessage();
                 }
                 if (msg.length() > 0) {
-                msg = "la valeur d'un attribut dupliqué rompt la contrainte d'unicité";
+                    msg = "la valeur d'un attribut dupliqué rompt la contrainte d'unicité";
                     JsfUtil.addErrorMessage(msg);
                 } else {
                     JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
                 }
                 System.out.println(msg);
-            }catch (Exception ex) {
-                
+            } catch (Exception ex) {
+
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
                 JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             }
@@ -251,10 +249,10 @@ public class UtilisateurController implements Serializable {
                 return null;
             }
         }
-        public void closeDialog(){
+
+        public void closeDialog() {
             RequestContext.getCurrentInstance().closeDialog(this);
         }
-        
 
     }
 

@@ -101,7 +101,7 @@ public class Solution implements Serializable {
 
     @Override
     public String toString() {
-        return id.toString() + ":" + affaireid.toString();
+        return affaireid.toString();
     }
 
 }

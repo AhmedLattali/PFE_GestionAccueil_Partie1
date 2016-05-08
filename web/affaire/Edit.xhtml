@@ -33,7 +33,7 @@
                                            var="typeEnergieItem"
                                            itemValue="#{typeEnergieItem}"/>
                         </p:selectOneMenu>
-                       <p:outputLabel value="#{bundle2.EditAffaireLabel_presentation}" for="presentation" />
+                        <p:outputLabel value="#{bundle2.EditAffaireLabel_presentation}" for="presentation" />
                         <p:inputTextarea  id="presentation" value="#{affaireController.selected.presentation}" title="#{bundle2.EditAffaireTitle_presentation}"  rows="10" cols="40" counter="display2" maxlength="1500" counterTemplate="{0} characters restantes." autoResize="false" />
                         <h:outputText id="display2" />
                     </p:panelGrid>

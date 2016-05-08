@@ -91,5 +91,5 @@ public class TypeContrat implements Serializable {
     public String toString() {
         return libeleTypeContrat;
     }
-    
+
 }

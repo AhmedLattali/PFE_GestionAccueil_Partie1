@@ -13,7 +13,7 @@
             <h:form id="QuestionDeleteForm" >
                 <h:panelGroup id="display" >
                     <p>Vous étes sur de suprimer cette question ?</p>
-                    
+
                     <p:commandButton  actionListener="#{questionController.destroy}" value="#{bundle.Confirmer}" update="display,:QuestionListForm:datalist,:growl" oncomplete="handleSubmit(args,'QuestionDeleteDialog');" icon="ui-icon-check"/>
                     <p:commandButton  immediate="true" value="#{bundle.Cancel}" oncomplete="handleSubmit(args,'QuestionDeleteDialog');" icon="ui-icon-close" styleClass="buttons">                                               
 

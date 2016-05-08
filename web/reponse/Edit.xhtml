@@ -13,9 +13,9 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{reponseController.selected != null}">
                         <p:outputLabel value="#{bundle2.EditReponseLabel_id}" for="id" />
-                        <p:inputText disabled="true" id="id" value="#{reponseController.selected.id}" title="#{bundle2.EditReponseTitle_id}" required="true" requiredMessage="#{bundle2.EditReponseRequiredMessage_id}"/>
+                        <p:inputText size="50" disabled="true" id="id" value="#{reponseController.selected.id}" title="#{bundle2.EditReponseTitle_id}" required="true" requiredMessage="#{bundle2.EditReponseRequiredMessage_id}"/>
                         <p:outputLabel value="#{bundle2.EditReponseLabel_libeleReponse}" for="libeleReponse" />
-                        <p:inputText id="libeleReponse" value="#{reponseController.selected.libeleReponse}" title="#{bundle2.EditReponseTitle_libeleReponse}" required="true" requiredMessage="#{bundle2.EditReponseRequiredMessage_libeleReponse}"/>
+                        <p:inputText size="50" id="libeleReponse" value="#{reponseController.selected.libeleReponse}" title="#{bundle2.EditReponseTitle_libeleReponse}" required="true" requiredMessage="#{bundle2.EditReponseRequiredMessage_libeleReponse}"/>
                         <p:outputLabel value="#{bundle2.EditReponseLabel_questionSuivantId}" for="questionSuivantId" />
                         <p:selectOneMenu id="questionSuivantId" value="#{reponseController.selected.questionSuivantId}" >
                             <f:selectItem itemLabel="#{bundle2.SelectOneMessage}"/>

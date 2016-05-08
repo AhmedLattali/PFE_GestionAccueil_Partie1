@@ -82,15 +82,15 @@ public class TypeContratController implements Serializable {
     }
 
     private void persist(PersistAction persistAction, String successMessage) {
-                if (selected != null) {
+        if (selected != null) {
             setEmbeddableKeys();
             try {
                 switch (persistAction) {
                     case CREATE:
-                        if(getFacade().create2(selected)==true){
-                             JsfUtil.addSuccessMessage(successMessage);
+                        if (getFacade().create2(selected) == true) {
+                            JsfUtil.addSuccessMessage(successMessage);
                         }
-                       
+
                         break;
                     case DELETE:
                         if (getFacade().remove2(selected) == true) {
@@ -115,7 +115,7 @@ public class TypeContratController implements Serializable {
                 JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             }
         }
-        
+
         /*if (selected != null) {
             setEmbeddableKeys();
             try {

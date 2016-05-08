@@ -13,7 +13,7 @@
             <h:form id="FonctionDeleteForm" >
                 <h:panelGroup id="display" >
                     <p>Vous étes sur de supprimer cette fonction ?</p>
-                    
+
                     <p:commandButton  actionListener="#{fonctionController.destroy}" value="#{bundle.Confirmer}" update="display,:FonctionListForm:datalist,:growl" oncomplete="handleSubmit(args,'FonctionDeleteDialog');" icon="ui-icon-check"/>
                     <p:commandButton  immediate="true" value="#{bundle.Cancel}" oncomplete="handleSubmit(args,'FonctionDeleteDialog');" icon="ui-icon-close" >                                               
 

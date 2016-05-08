@@ -11,11 +11,13 @@
         <p:dialog id="QuestionViewDlg" widgetVar="QuestionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle2.ViewQuestionTitle}">
             <h:form id="QuestionViewForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{questionController.selected != null}">
+                    <p:panelGrid columns="2" rendered="#{questionController.selected2 != null}">
                         <h:outputText value="#{bundle2.ViewQuestionLabel_id}"/>
-                        <h:outputText value="#{questionController.selected.id}" title="#{bundle2.ViewQuestionTitle_id}"/>
+                        <h:outputText value="#{questionController.selected2.id}" title="#{bundle2.ViewQuestionTitle_id}"/>
                         <h:outputText value="#{bundle2.ViewQuestionLabel_libeleQuestion}"/>
-                        <h:outputText value="#{questionController.selected.libeleQuestion}" title="#{bundle2.ViewQuestionTitle_libeleQuestion}"/>
+                        <h:outputText value="#{questionController.selected2.libeleQuestion}" title="#{bundle2.ViewQuestionTitle_libeleQuestion}"/>
+                        <h:outputText value="Réponses possibless"/>
+                        <h:outputText value="#{questionController.selected2.listLibeleReponses}" title="#{bundle2.ViewQuestionTitle_libeleQuestion}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" oncomplete="handleSubmit(args,'QuestionViewDialog');"/>
                 </h:panelGroup>

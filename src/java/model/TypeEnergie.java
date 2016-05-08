@@ -91,5 +91,5 @@ public class TypeEnergie implements Serializable {
     public String toString() {
         return libeleTypeEnergie;
     }
-    
+
 }

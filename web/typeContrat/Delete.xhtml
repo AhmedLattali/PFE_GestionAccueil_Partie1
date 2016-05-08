@@ -13,7 +13,7 @@
             <h:form id="TypeContratDeleteForm" >
                 <h:panelGroup id="display" >
                     <p>Vous étes sur de supprimer ce typeContrat ?</p>
-                    
+
                     <p:commandButton  actionListener="#{typeContratController.destroy}" value="#{bundle.Confirmer}" update="display,:TypeContratListForm:datalist,:growl" oncomplete="handleSubmit(args,'TypeContratDeleteDialog');" icon="ui-icon-check"/>
                     <p:commandButton  immediate="true" value="#{bundle.Cancel}" oncomplete="handleSubmit(args,'TypeContratDeleteDialog');" icon="ui-icon-close">                                               
 

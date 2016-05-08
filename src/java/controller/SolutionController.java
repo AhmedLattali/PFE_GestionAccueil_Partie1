@@ -87,10 +87,9 @@ public class SolutionController implements Serializable {
             try {
                 switch (persistAction) {
                     case CREATE:
-                        if(getFacade().create2(selected) == true){
-                             JsfUtil.addSuccessMessage(successMessage);
+                        if (getFacade().create2(selected) == true) {
+                            JsfUtil.addSuccessMessage(successMessage);
                         }
-                       
 
                         break;
                     case UPDATE:
