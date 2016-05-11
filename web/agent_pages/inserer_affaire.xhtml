@@ -25,6 +25,7 @@
                     <p:column>
                         <p:selectOneMenu>
                             <p:ajax listener="#{InsererAffaireController.add(qr)}" update="panel_grid" />
+                            <f:selectItem />
                             <f:selectItems value="#{qr.listLibeleReponses}" />
                         </p:selectOneMenu>   
                     </p:column>
