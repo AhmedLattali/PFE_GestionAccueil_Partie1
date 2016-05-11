@@ -3,72 +3,77 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-
-    <ui:composition>
-
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+        <meta name="viewport" content="width=device-width, initial-scale=1 , height=device-height" />
+    </h:head>
+    <ui:composition >
         <f:facet name="a">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+            <meta name="viewport" content="width=device-width, initial-scale=1 , height=device-height" />
             <h:outputStylesheet name="css/sidebar_menu.css" />
-
-
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
-
             <h:outputScript name="js/sidebar_menu.js" />
         </f:facet>
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
 
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                    <li class="active">
+                        <h:link outcome="/admin_pages/accueil_admin"><span class="fa-stack fa-lg pull-left"><i class="fa fa-bank fa-stack-1x "></i></span>Accueil</h:link>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-users fa-stack-1x"></i></span>Gestion des utilisateur</a>
+                        <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                            <h:link outcome="/utilisateur/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list fa-stack-1x "></i></span>Liste des utilisateurs</h:link>
+                        </ul>
+                        <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                            <h:link outcome="/typeUtilisateur/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list-ul fa-stack-1x "></i></span>Types des utilisateurs</h:link>
+                        </ul>
+                        <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                            <h:link outcome="/fonction/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list-ul fa-stack-1x "></i></span>Liste des fonctions</h:link>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-th-large fa-stack-1x"></i></span>Gestion des affaires</a>
+                        <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                            <h:link outcome="/affaire/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list fa-stack-1x "></i></span>Liste des affaires</h:link>
+                        </ul>
+                        <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                            <h:link outcome="/typeEnergie/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list-ul fa-stack-1x "></i></span>Types énergie</h:link>
+                        </ul>
+                        <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                            <h:link outcome="/typeContrat/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list-ul fa-stack-1x "></i></span>Types contrat</h:link>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-graduation-cap fa-stack-1x"></i></span>Gestion des connaissances</a>
+                        <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                            <h:link outcome="/question/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list fa-stack-1x "></i></span>Liste des questions</h:link>
+                        </ul>
+                        <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                            <h:link outcome="/reponse/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list-ul fa-stack-1x "></i></span>Liste des réponses</h:link>
+                        </ul>
+                        <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                            <h:link outcome="/solution/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list-ul fa-stack-1x"></i></span>Liste des solutions</h:link>
+                        </ul>
+                    </li>
+                    <br/>
+                    <br/><br/>
 
-                <li class="active">
-                    <h:link outcome="/admin_pages/accueil_admin"><span class="fa-stack fa-lg pull-left"><i class="fa fa-bank fa-stack-1x "></i></span>Accueil</h:link>
-                </li>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-users fa-stack-1x"></i></span>Gestion des utilisateur</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <h:link outcome="/utilisateur/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list fa-stack-1x "></i></span>Liste des utilisateurs</h:link>
-                    </ul>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <h:link outcome="/typeUtilisateur/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list-ul fa-stack-1x "></i></span>Types des utilisateurs</h:link>
-                    </ul>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <h:link outcome="/fonction/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list-ul fa-stack-1x "></i></span>Liste des fonctions</h:link>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-th-large fa-stack-1x"></i></span>Gestion des affaires</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <h:link outcome="/affaire/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list fa-stack-1x "></i></span>Liste des affaires</h:link>
-                    </ul>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <h:link outcome="/typeEnergie/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list-ul fa-stack-1x "></i></span>Types énergie</h:link>
-                    </ul>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <h:link outcome="/typeContrat/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list-ul fa-stack-1x "></i></span>Types contrat</h:link>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-graduation-cap fa-stack-1x"></i></span>Gestion des connaissances</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <h:link outcome="/question/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list fa-stack-1x "></i></span>Liste des questions</h:link>
-                    </ul>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <h:link outcome="/reponse/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list-ul fa-stack-1x "></i></span>Liste des réponses</h:link>
-                    </ul>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <h:link outcome="/solution/List"><span class="fa-stack fa-lg pull-left"><i class="fa fa-list-ul fa-stack-1x"></i></span>Liste des solutions</h:link>
-                    </ul>
-                </li>
-                <br/>
-                <br/><br/>
+                    <li>
+                        <h:form>       
+                            <p:commandLink action="#{utilisateurController.logout}" ajax="false">
+                                <h:outputText value="Déconnection" /><span class="fa-stack fa-lg pull-left" ><i class="fa fa-sign-out fa-stack-1x"></i></span>
+                            </p:commandLink>
+                        </h:form>
+                    </li>
 
-                <li>
-                    <h:form>       
-                        <p:commandLink action="#{utilisateurController.logout}" ajax="false">
-                            <h:outputText value="Déconnection" /><span class="fa-stack fa-lg pull-left" ><i class="fa fa-sign-out fa-stack-1x"></i></span>
-                        </p:commandLink>
-                    </h:form>
-                </li>
-
-            </ul>
-        </div>      
+                </ul>
+            </div>      
+        </div>  
     </ui:composition>
 </html>

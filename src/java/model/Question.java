@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -61,6 +62,12 @@ public class Question implements Serializable {
     public Question(Integer id, String libeleQuestion) {
         this.id = id;
         this.libeleQuestion = libeleQuestion;
+    }
+        public Question(Integer id, String libeleQuestion, List<Reponse> reponseList) {
+        this.id = id;
+        this.libeleQuestion = libeleQuestion;
+        this.reponseList1 = new ArrayList<>() ;
+        this.reponseList1.addAll(reponseList) ;
     }
 
     public Integer getId() {

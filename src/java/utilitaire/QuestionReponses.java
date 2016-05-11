@@ -21,10 +21,10 @@ public class QuestionReponses {
         
     }
 
-    public QuestionReponses(int idd, String libeleQuestionn, List<String> listLibeleReponsess) {
-        this.id = idd;
-        this.libeleQuestion = libeleQuestionn;
-        this.listLibeleReponses = listLibeleReponsess;
+    public QuestionReponses(int id, String libeleQuestion, List<String> listLibeleReponses) {
+        this.id = id;
+        this.libeleQuestion = libeleQuestion;
+        this.listLibeleReponses = listLibeleReponses;
 
     }
 
@@ -73,5 +73,6 @@ public class QuestionReponses {
     public void setLibeleReponse(String libeleReponse){
         this.listLibeleReponses.add(libeleReponse) ;
     }
+   
 
 }
